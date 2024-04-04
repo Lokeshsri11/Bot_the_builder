@@ -1,5 +1,5 @@
 import nltk
-nltk.download("punkt")  # If not previously downloaded
+nltk.download("punkt")  
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 import numpy as np
@@ -30,14 +30,14 @@ def ask_question(question):
     closest = np.argmax(similarities, axis=1)
     best_similarity_score = np.max(similarities, axis=1)
 
-    if best_similarity_score < 0.01:  # you might need to adjust this threshold
+    if best_similarity_score < 0.01: 
         return "I don't know about that."
     return sentences[closest[0]]
 
 vectorizer = TfidfVectorizer().fit(sentences)
 doc_vector = vectorizer.transform(sentences)
 
-# Loop to continuously ask questions
+
 while True:
     # Read question from terminal
     question = input("\nEnter your question (or type 'exit' to stop): ")
